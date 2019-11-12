@@ -70,20 +70,20 @@ This code sends data received in one serial port of the Arduino Mega to another.
 [source,arduino]
 ----
 void setup() {
-  Serial.begin(9600);
-  Serial1.begin(9600);
+  Serial01.begin(9600);
+  Serial10.begin(9600);
 }
 
 void loop() {
   // read from port 0, send to port 1:
-  if (Serial.available()) {
-    int inByte = Serial.read();
-    Serial1.print(inByte, DEC);
+  if (Serial01.available()) {             //Serial01 - Serial read from port 0, send to port 1
+    int inByte = Serial01.read();
+    Serial10.print(inByte, DEC);
   }
   // read from port 1, send to port 0:
-  if (Serial1.available()) {
-    int inByte = Serial1.read();
-    Serial.print(inByte, DEC);
+  if (Serial10.available()) {             //Serial10 - Serial read from port 1, send to port 1
+    int inByte = Serial10.read();
+    Serial01.print(inByte, DEC);
   }
 }
 ----
